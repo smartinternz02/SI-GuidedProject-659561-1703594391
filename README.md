@@ -26,3 +26,5 @@ In this project ibm db2 is used for database operations and images are stored an
 
 
 Available online at : https://ibmnov23fdpr-dhiraja-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/
+
+User can login using username: passpwrd :- dibm/dibm
