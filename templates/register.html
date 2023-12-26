@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideShare - Registration</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .registration-container {
+      max-width: 600px;
+      margin: auto;
+      margin-top: 50px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-register {
+      width: 100%;
+    }
+
+    .error-message {
+      color: #dc3545;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container registration-container">
+  <h2>RideShare - Register</h2>
+   {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+  <form id="registrationForm" onsubmit="return validateForm()" method="post" action="{{ url_for('register') }}">
+    
+    <div class="form-group">
+      <label for="userid">UserID:</label>
+      <input type="text" class="form-control" id="userid" name="userid" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-register">Register</button>
+    <div class="error-message" id="errorMessage"></div>
+  </form>
+  <a href="{{ url_for('landing') }}">Back to Home</a> <span> | </span> <a href="{{ url_for('login') }}">Already register! Kindly Login</a>
+</div>
+
+<script>
+  function validateForm() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    // Basic email validation
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      document.getElementById('errorMessage').innerHTML = 'Invalid email format';
+      return false;
+    }
+
+  
+
+    // Additional validation logic can be added here
+
+    // Clear error message if validation passes
+    document.getElementById('errorMessage').innerHTML = '';
+
+    // Assuming the form is submitted to the server for further processing
+    // Add an AJAX call or redirect to the server-side registration endpoint
+
+    return true;
+  }
+</script>
+
+</body>
+</html>

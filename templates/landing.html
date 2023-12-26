@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ride Sharing & CO2 Emissions</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: #28a745;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+
+    /* Hero Section */
+    .jumbotron {
+      background-color: #28a745;
+      color: #fff;
+      padding: 100px 20px;
+    }
+
+    /* About Section */
+    #about {
+      background-color: #f8f9fa;
+      padding: 50px 20px;
+    }
+
+    /* How It Works Section */
+    #how-it-works {
+      padding: 50px 20px;
+    }
+
+    /* Benefits Section */
+    #benefits {
+      background-color: #f8f9fa;
+      padding: 50px 20px;
+    }
+
+    #benefits h4 {
+      color: #28a745;
+    }
+
+    /* Features Section */
+    #features {
+      padding: 50px 20px;
+    }
+
+    #features h4 {
+      color: #28a745;
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #f8f9fa;
+      padding: 50px 20px;
+    }
+
+     /* Footer */
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px 0;
+      margin-top: auto; /* Push the footer to the bottom */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">RideShare</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#how-it-works">How It Works</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#benefits">Benefits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#features">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary text-white" href="/register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-outline-light" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="jumbotron text-center">
+  <h1 class="display-4">Ride Together, Reduce CO2 Together!</h1>
+  <p class="lead">Join the movement for sustainable transportation.</p>
+  <a class="btn btn-primary btn-lg" href="/register" role="button">Get Started</a>
+</section>
+
+<!-- About Section -->
+<section id="about" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>About Us</h2>
+      <p>Carbon dioxide (CO2) emissions are a major contributor to climate change and global warming. They are produced by the burning of fossil fuels, such as coal, oil, and natural gas, which are used to power transportation, electricity generation, and other activities.</p>
+      <p>Ride pooling, also known as carpooling, is a form of transportation in which multiple passengers share a ride in a single vehicle. This can help reduce the number of vehicles on the road, which in turn reduces CO2 emissions by reducing the total distance traveled by vehicles.</p>
+    </div>
+    <div class="col-md-6">
+      <!-- Add relevant images or illustrations here -->
+      <img src="{{imagurl}}" alt="About Us Image" class="img-fluid" width="300" height="200">
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="container">
+  <h2 class="text-center">How It Works</h2>
+  <p class="text-center">Ride pooling can be arranged informally, such as between friends or colleagues, or through organized programs, such as those offered by employers or government agencies. It can also be facilitated through technology, such as smartphone apps, which allow passengers to connect and share rides with others who are traveling along similar routes.</p>
+  <!-- Add steps or illustrations of the ride-sharing process -->
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits" class="container">
+  <h2 class="text-center">Benefits</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Reduced CO2 Emissions</h4>
+      <p>By sharing a ride, passengers can reduce the number of trips taken, leading to lower fuel consumption and fewer emissions per person.</p>
+    </div>
+    <div class="col-md-4">
+      <h4>Traffic Congestion Reduction</h4>
+      <p>Ride pooling also contributes to reducing traffic congestion, making transportation more efficient for everyone.</p>
+    </div>
+    <div class="col-md-4">
+      <h4>Cost Savings</h4>
+      <p>Sharing rides can help individuals save on transportation costs, making it a cost-effective and sustainable choice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="container">
+  <h2 class="text-center">Features</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Ride Booking</h4>
+      <p>Book a ride seamlessly through our platform. Choose your pickup and destination, and find others traveling along similar routes.</p>
+      <a href="/pickride">Check Here</a>
+    </div>
+    <div class="col-md-6">
+      <h4>CO2 Emission Checker</h4>
+      <p>Check the CO2 emissions of different vehicle types and fuel types. Understand the environmental impact of your travel choices.</p>
+      <a href="/co2check">Check Here</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container">
+  <h2 class="text-center">Contact Us</h2>
+  <p class="text-center">Have questions or want to get in touch? Reach out to us at rideshare@gmail.com</p>
+  <!-- Add a contact form or relevant contact information -->
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-center py-3">
+  <p>&copy; 2023 RideShare. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+<script type="text/javascript">
+  
+  window.watsonAssistantChatOptions = {
+    integrationID: "34b98e87-a499-493e-b606-d5254365c65e", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "4ec0c269-aca3-42da-b28a-2ae5bee5a78b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+
+</script>
+</body>
+</html>

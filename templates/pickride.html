@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideShare - Pick a Ride</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #003366);
+      padding: 10px 0;
+      border-bottom: 2px solid #fff;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .nav-item {
+      margin-right: 15px;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+    
+
+    .card {
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .card-text {
+      color: #6c757d;
+    }
+
+    .btn-book {
+      width: 100%;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-book:hover {
+      background-color: #0056b3;
+    }
+
+     .active {
+            font-weight: bold; /* You can customize this based on your design */
+            color: #007bff;  /* You can customize this based on your design */
+        }
+
+
+        .co2-cards-container {
+      max-width: 800px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+
+    #logoutBtn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #logoutBtn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">RideShare</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('co2check') }}">CO2 Emission Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('pickride') }}">Pick a Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('publishride') }}">Publish Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtn" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        <!-- Add more menu items as needed -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container co2-cards-container">
+  <h2 class="my-4">Search for Available Rides</h2>
+  <form id="ride-search-form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="leavingFrom">Leaving From</label>
+        <input type="text" class="form-control" id="leavingFrom" name="leavingFrom" placeholder="Enter leaving from location">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="goingTo">Going To</label>
+        <input type="text" class="form-control" id="goingTo" name="goingTo" placeholder="Enter going to location">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="date">Date</label>
+        <input type="datetime-local" class="form-control" id="date" name="date">
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="searchRides()">Search Rides</button>
+  </form>
+
+  <div id="rides-list" class="mt-4">
+    <!-- Ride listings will be displayed here dynamically -->
+  </div>
+</div>
+
+<script>
+
+
+
+
+   function searchRides() {
+
+    var formData = new FormData(document.getElementById('ride-search-form'));
+
+    fetch('{{ url_for("fetch_rides") }}', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => displayRides(data));
+  }
+
+  function displayRides(ridesList) {
+    /*console.log(ridesList)*/
+    var ridesContainer = document.getElementById('rides-list');
+    ridesContainer.innerHTML = '';
+
+    if (ridesList.length === 0) {
+      ridesContainer.innerHTML = '<p>No rides available for the selected criteria.</p>';
+      return;
+    }
+
+    ridesList.forEach(function(ride) {
+      console.log(ride.FULLNAME)
+      var card = document.createElement('div');
+      card.className = 'card';
+      var cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+
+     
+     // Add the profile image
+      var profileImage = document.createElement('img');
+      profileImage.className = 'profile-image';
+      profileImage.src = "https://dibmbuck.s3.eu-de.cloud-object-storage.appdomain.cloud/"+ride.USERPROFILE; // Replace with the actual property name for the profile image URL
+      profileImage.alt = 'Profile Image';
+      cardBody.appendChild(profileImage);
+
+      var title = document.createElement('h5');
+      title.className = 'card-title';
+      title.textContent = "Perosn Name : "+ ride.FULLNAME;
+
+      var text = document.createElement('p');
+      text.className = 'card-text';
+      text.textContent = `Phone: ${ride.PHONENUMBER} | Leaving From: ${ride.LOCATION} | Going To: ${ride.DESTINATION} | No of People: ${ride.NUMBEROFPEOPLE}`;
+      var bookButton = document.createElement('button');
+      bookButton.className = 'btn btn-book';
+      bookButton.textContent = 'Book Ride';
+      cardBody.appendChild(title);
+      cardBody.appendChild(text);
+      cardBody.appendChild(bookButton);
+      card.appendChild(cardBody);
+      ridesContainer.appendChild(card);
+    });
+  }
+  /*
+  function searchRides() {
+    // You can implement the ride search logic here
+    // For demonstration purposes, let's just display a sample list of rides
+
+    var ridesList = [
+      { name: 'John Doe', phone: '123-456-7890', leaving: 'City A', going: 'City B', people: 3, booking: 'Available' },
+      { name: 'Jane Smith', phone: '987-654-3210', leaving: 'City C', going: 'City D', people: 2, booking: 'Available' },
+      { name: 'Bob Johnson', phone: '555-123-4567', leaving: 'City X', going: 'City Y', people: 1, booking: 'Booked' },
+    ];
+
+    displayRides(ridesList);
+  }
+
+  function displayRides(ridesList) {
+    var ridesContainer = document.getElementById('rides-list');
+    ridesContainer.innerHTML = '';
+
+    if (ridesList.length === 0) {
+      ridesContainer.innerHTML = '<p>No rides available for the selected criteria.</p>';
+      return;
+    }
+
+    ridesList.forEach(function(ride) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      var cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+      var title = document.createElement('h5');
+      title.className = 'card-title';
+      title.textContent = ride.name;
+      var text = document.createElement('p');
+      text.className = 'card-text';
+      text.textContent = `Phone: ${ride.phone} | Leaving From: ${ride.leaving} | Going To: ${ride.going} | No of People: ${ride.people} | Booking: ${ride.booking}`;
+      var bookButton = document.createElement('button');
+      bookButton.className = 'btn btn-book';
+      bookButton.textContent = 'Book Ride';
+      cardBody.appendChild(title);
+      cardBody.appendChild(text);
+      cardBody.appendChild(bookButton);
+      card.appendChild(cardBody);
+      ridesContainer.appendChild(card);
+    });
+  }
+  */
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

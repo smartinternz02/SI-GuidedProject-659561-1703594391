@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideShare - Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add your chart/graph libraries here -->
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #003366);
+      padding: 10px 0;
+      border-bottom: 2px solid #fff;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .nav-item {
+      margin-right: 15px;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+ 
+
+    .benefits-section,
+    .statistics-section {
+      margin-bottom: 30px;
+    }
+
+    .chart-container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    #logoutBtn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #logoutBtn:hover {
+      background-color: #c82333;
+    }
+    .active {
+            font-weight: bold; /* You can customize this based on your design */
+            color: #007bff;  /* You can customize this based on your design */
+        }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">RideShare</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('co2check') }}">CO2 Emission Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pickride') }}">Pick a Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('publishride') }}">Publish Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtn" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="benefits-section">
+    <h2 class="my-4">Benefits of Ride Sharing</h2>
+    <p>Ride sharing, also known as carpooling, offers a range of advantages for both individuals and the environment. Here are some key benefits:</p>
+    
+    <ul>
+      <li><strong>Environmental Impact:</strong> By sharing rides, you contribute to reducing the number of vehicles on the road, leading to lower carbon emissions and improved air quality.</li>
+      
+      <li><strong>Cost Savings:</strong> Ride sharing helps you save money on fuel, tolls, and parking fees. Sharing the cost of the trip makes transportation more affordable for everyone involved.</li>
+      
+      <li><strong>Traffic Reduction:</strong> Carpooling reduces the overall traffic congestion, making commuting faster and more efficient for everyone.</li>
+      
+      <li><strong>Social Connections:</strong> Ride sharing provides an opportunity to meet new people, build connections, and foster a sense of community among commuters.</li>
+      
+      <li><strong>Reduced Wear and Tear:</strong> Sharing the driving responsibilities means less wear and tear on your vehicle, potentially extending its lifespan and reducing maintenance costs.</li>
+    </ul>
+
+    <p>These benefits make ride sharing a sustainable and economical choice for daily commuting and long-distance travel.</p>
+  </div>
+
+  <div class="statistics-section">
+    <h2 class="my-4">CO2 Emission Savings Statistics</h2>
+    <div class="chart-container">
+      <!-- Add your charts/graphs here -->
+      <div class="chart-container">
+        <!-- Dummy line chart -->
+        <canvas id="lineChart"></canvas>
+
+        <!-- Dummy bar chart -->
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  function logout() {
+    // Implement the logout logic here
+    alert('Logout successful!');
+    // Redirect to the login page or perform other actions as needed
+  }
+
+
+    // Dummy data for line chart
+    var lineChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'CO2 Emission Savings',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        data: [10, 20, 15, 25, 18, 30],
+        fill: false,
+      }]
+    };
+
+    // Dummy data for bar chart
+    var barChartData = {
+      labels: ['Car', 'Bike', 'Bus'],
+      datasets: [{
+        label: 'CO2 Emission Savings',
+        backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
+        data: [50, 30, 20],
+      }]
+    };
+
+    // Create line chart
+    var lineChart = new Chart(document.getElementById('lineChart'), {
+      type: 'line',
+      data: lineChartData,
+    });
+
+    // Create bar chart
+    var barChart = new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: barChartData,
+    });
+  </script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add your chart/graph scripts here -->
+
+</body>
+</html>

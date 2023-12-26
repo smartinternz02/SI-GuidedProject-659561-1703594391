@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideShare - Publish Ride</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #007bff, #003366);
+      padding: 10px 0;
+      border-bottom: 2px solid #fff;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .nav-item {
+      margin-right: 15px;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+    
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-publish {
+      width: 100%;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-publish:hover {
+      background-color: #218838;
+    }
+
+      #profilePicInput {
+      display: none;
+    }
+
+    #profilePicLabel {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+     .active {
+            font-weight: bold; /* You can customize this based on your design */
+            color: #007bff;  /* You can customize this based on your design */
+        }
+
+
+        #logoutBtn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #logoutBtn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">RideShare</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('co2check') }}">CO2 Emission Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pickride') }}">Pick a Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('publishride') }}">Publish Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtn" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        <!-- Add more menu items as needed -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="my-4">Publish Ride</h2>
+  <form id="publish-ride-form" method="post" action="{{ url_for('publishride') }}" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" class="form-control" id="fullName"  name="fullName" placeholder="Enter your full name">
+    </div>
+    <div class="form-group">
+      <label for="phoneNo">Phone No</label>
+      <input type="tel" class="form-control" id="phoneNo" name="phoneNo" placeholder="Enter your phone number">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Trip Password</label>
+      <input type="password" class="form-control" id="password"  name="password" placeholder="Enter your password">
+    </div>
+    <div class="form-group">
+      <label for="leavingFrom">Leaving From</label>
+      <input type="text" class="form-control" id="leavingFrom"  name="leavingFrom" placeholder="Enter leaving from location">
+    </div>
+    <div class="form-group">
+      <label for="goingTo">Going To</label>
+      <input type="text" class="form-control" id="goingTo" name="goingTo" placeholder="Enter going to location">
+    </div>
+    <div class="form-group">
+      <label for="dateTime">Date and Time</label>
+      <input type="datetime-local" class="form-control" id="dateTime" name="dateTime">
+    </div>
+    <div class="form-group">
+      <label for="noOfPeople">No of People</label>
+      <input type="number" class="form-control" id="noOfPeople" name="noOfPeople" placeholder="Enter number of people">
+    </div>
+    
+    <div class="form-group">
+      <input type="file" id="profilePicInput"  name= "profilePicInput" accept="image/*">
+      <label for="profilePicInput" id="profilePicLabel">Upload Profile Picture</label>
+    </div>
+    <button type="submit" class="btn btn-publish" >Publish Ride</button>
+  </form>
+</div>
+
+<script>
+  function publishRide() {
+    // You can implement the logic to publish the ride here
+    // For demonstration purposes, let's just display a success message
+    alert('Ride published successfully!');
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

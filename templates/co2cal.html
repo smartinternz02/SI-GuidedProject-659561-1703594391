@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideShare - CO2 Emission Checker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+     .navbar {
+      background: linear-gradient(to right, #007bff, #003366);
+      padding: 10px 0;
+      border-bottom: 2px solid #fff;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .nav-item {
+      margin-right: 15px;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+    .co2-cards-container {
+      max-width: 800px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    .card {
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .card-description {
+      margin-top: 10px;
+      color: #6c757d;
+    }
+
+    .btn-calculate {
+      width: 100%;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-calculate:hover {
+      background-color: #218838;
+    }
+
+     .active {
+            font-weight: bold; /* You can customize this based on your design */
+            color: #007bff;  /* You can customize this based on your design */
+        }
+
+        #logoutBtn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #logoutBtn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">RideShare</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+       <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('co2check') }}">CO2 Emission Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pickride') }}">Pick a Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('publishride') }}">Publish Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtn" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        <!-- Add more menu items as needed -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container co2-cards-container">
+  <div class="row">
+    <!-- Car CO2 Emission Checker Card -->
+    <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Car CO2 Emission Checker</h5>
+          <p class="card-description">
+            Check and understand the carbon dioxide emissions of your car. Assess the environmental impact of your car travel and explore ways to reduce your carbon footprint. Calculate emissions based on factors such as fuel efficiency and distance traveled.
+          </p>
+          <a class="" href="{{ url_for('co2calculate') }}">Check Emissions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bike CO2 Emission Checker Card -->
+    <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Bike CO2 Emission Checker</h5>
+          <p class="card-description">
+            Explore and measure the carbon dioxide emissions from biking. Understand the environmental impact of your biking activities. Use this tool to calculate emissions based on factors such as distance traveled and energy consumption.
+          </p>
+          <a class="" href="{{ url_for('co2calculate') }}">Check Emissions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bus CO2 Emission Checker Card -->
+    <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Bus and Mini-Van CO2 Emission Checker</h5>
+          <p class="card-description">
+            Evaluate and understand the carbon dioxide emissions associated with bus transportation. Learn about the environmental footprint of bus travel and explore ways to make sustainable choices. Calculate emissions based on factors such as passenger capacity, fuel type, and distance traveled.
+          </p>
+          <a class="" href="{{ url_for('co2calculate') }}">Check Emissions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateCO2(vehicleType) {
+    // You can implement the CO2 calculation logic here
+    // For demonstration purposes, let's just display a message
+    alert('CO2 Emission Check for ' + vehicleType + ' will be implemented here.');
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
