@@ -22,7 +22,10 @@ This project, developed for the IBM SkillsBuild Virtual Faculty Buildathon 2023 
 - **Containerization:** Docker
 - **Orchestration:** Red Hat OpenShift Kubernetes
 
-In this project ibm db2 is used for database operations and images are stored and retrieved from ibm cloud storage
+In this project ibm db2 is used for database operations and images are stored and retrieved from ibm cloud storage. The code docker image is created and pushed to 
+dockerhub : https://hub.docker.com/layers/dhirajaminm/ibmnov23fdpr/0.0.2.Release/images/sha256-1063c9e82689f3b9e35cca651c8290b020db5a19c47098612eed079478f145ed?context=explore
+
+The same Docker container is employed within Red Hat OpenShift for the deployment of the web application.
 
 
 Available online at : https://ibmnov23fdpr-dhiraja-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/
