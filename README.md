@@ -21,3 +21,8 @@ This project, developed for the IBM SkillsBuild Virtual Faculty Buildathon 2023 
 - **Framework:** Flask
 - **Containerization:** Docker
 - **Orchestration:** Red Hat OpenShift Kubernetes
+
+In this project ibm db2 is for database operations and images are stored and retived from ibm cloud storage
+
+
+Available online at : https://ibmnov23fdpr-dhiraja-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/
