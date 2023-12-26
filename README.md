@@ -31,3 +31,9 @@ The same Docker container is employed within Red Hat OpenShift for the deploymen
 Available online at : https://ibmnov23fdpr-dhiraja-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/
 
 User can login using username: passpwrd :- dibm/dibm
+
+
+
+Badges as per requirement
+DevOps for Enterprise Business Agility: https://www.credly.com/badges/48bda7ad-602d-4174-a00d-62d10dca850d/public_url
+Journey to Cloud: Envisioning Your Solution: https://www.credly.com/badges/c14e99e6-bd77-44d9-b0c8-d49cccd9cae9/public_url
